@@ -1,0 +1,3 @@
+rootProject.name = 'movielistrReactNative'
+
+include ':app'
