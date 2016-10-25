@@ -1,13 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import MovieList from './movie-list';
 import {Router, Scene} from 'react-native-router-flux';
+import MovieList from './movie-list';
+import MovieDetails from './movie-details';
 
 const Root = () => {
 	return (
 		<Router>
 			<Scene key="root" style={sceneStyle}>
 				<Scene key="movieList" component={MovieList} title="Movies" initial="true"/>
+				<Scene key="movieDetails" component={MovieDetails} title="Details"/>
 			</Scene>
 		</Router>
 	)

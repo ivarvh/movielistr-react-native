@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {AppRegistry} from 'react-native';
+import {Provider} from 'react-redux';
+import Root from './src/components/root';
+import MovieStore from './src/reducers/movielistr';
 
 export default class movielistrReactNative extends Component {
 	render() {

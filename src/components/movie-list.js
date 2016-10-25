@@ -1,39 +1,40 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Text, ListView, View, StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
+import {Container, Content, List, ListItem} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 
 const mapStateToProps = (state) => {
-	const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id != r2.id});
 	return {
-		movies: ds.cloneWithRows(state.movies.movies)
+		movies: state.movies.movies
 	};
 };
 
-const renderRow = ({title}, sectionId, rowId) => {
+const renderRow = (movie) => {
 	return (
-		<View style={styles.movieListItemStyle}>
-			<Text style={styles.movieListItemTextStyle}>{title}</Text>
-		</View>
+		<ListItem>
+			<Text onPress={() => Actions.movieDetails({data: movie})}>{movie.title}</Text>
+		</ListItem>
 	);
 };
 
 const MovieList = ({movies}) => {
 	return (
-		<View style={styles.viewStyle}>
-			<ListView
-				style={styles.listStyle}
-				dataSource={movies}
-				renderRow={renderRow}
-			/>
-		</View>
+		<Container style={styles.movieListItemStyle}>
+			<Content>
+				<List
+					renderRow={renderRow}
+					dataArray={movies}
+				/>
+			</Content>
+		</Container>
 	)
 };
 
 export default connect(mapStateToProps)(MovieList);
 
 let styles = StyleSheet.create({
-	viewStyle: {
-	},
+	viewStyle: {},
 	listStyle: {
 		flex: 1,
 	},

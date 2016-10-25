@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import checkStatus from 'fetch-check-http-status';
 
-const BASE_URL = 'http://localhost:8091/application/movies';
+const BASE_URL = 'http://10.20.4.122:8091/application/movies';
 const JSON_HEADERS = {
 	'Accept': 'application/json',
 	'Content-Type': 'application/json',
