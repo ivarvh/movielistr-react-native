@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, Text} from 'react-native';
-import {Container, Content, List, ListItem} from 'native-base';
+import {Container, Content, List, ListItem, Button} from 'native-base';
 import {Actions} from 'react-native-router-flux';
 
 const mapStateToProps = (state) => {
@@ -26,6 +26,9 @@ const MovieList = ({movies}) => {
 					renderRow={renderRow}
 					dataArray={movies}
 				/>
+				<Button block onPress={() => {Actions.createMovie()}}>
+					Create
+				</Button>
 			</Content>
 		</Container>
 	)

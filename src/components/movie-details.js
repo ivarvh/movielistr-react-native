@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Text, StyleSheet} from 'react-native';
-import {Grid, Container, Content, Col, Row} from 'native-base';
+import {Grid, Container, Content, Col, Row, Button} from 'native-base';
+import {Actions} from 'react-native-router-flux';
 
 const mapDispatchToProps = (dispatch) => {
 	return {};
@@ -32,6 +33,9 @@ const Component = ({data: movie}) => {
 						<Row style={styles.rowStyle}><Text>{movie.seen ? 'Yes' : 'No'}</Text></Row>
 					</Col>
 				</Grid>
+				<Button block onPress={()=> {
+					Actions.updateMovie({initialValues: movie})
+				}}>Edit</Button>
 			</Content>
 		</Container>
 	);

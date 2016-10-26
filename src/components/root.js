@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {Router, Scene} from 'react-native-router-flux';
 import MovieList from './movie-list';
 import MovieDetails from './movie-details';
+import UpdateMovieForm from './movie-update-form';
+import CreateMovieForm from './movie-create-form';
 
 const Root = () => {
 	return (
@@ -10,6 +12,8 @@ const Root = () => {
 			<Scene key="root" style={sceneStyle}>
 				<Scene key="movieList" component={MovieList} title="Movies" initial="true"/>
 				<Scene key="movieDetails" component={MovieDetails} title="Details"/>
+				<Scene key="updateMovie" component={UpdateMovieForm} title="Update"/>
+				<Scene key="createMovie" component={CreateMovieForm} title="Create"/>
 			</Scene>
 		</Router>
 	)
