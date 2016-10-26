@@ -1,18 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Text, StyleSheet} from 'react-native';
-import {Grid, Container, Content, Col, Row, Button} from 'native-base';
+import {Grid, Container, Content, Col, Row, Button, Icon} from 'native-base';
 import {Actions} from 'react-native-router-flux';
+import {deleteMovie} from '../reducers/movies';
 
 const mapDispatchToProps = (dispatch) => {
-	return {};
+	return {
+		deleteMovie: (movie) => {
+			dispatch(deleteMovie(movie.id))
+				.then(() => {
+					Actions.movieList();
+				});
+		}
+	};
 }
 
 const mapStateToProps = (state) => {
 	return {};
 };
 
-const Component = ({data: movie}) => {
+const Component = ({data: movie, deleteMovie}) => {
 	return (
 		<Container>
 			<Content>
@@ -33,9 +41,14 @@ const Component = ({data: movie}) => {
 						<Row style={styles.rowStyle}><Text>{movie.seen ? 'Yes' : 'No'}</Text></Row>
 					</Col>
 				</Grid>
-				<Button block onPress={()=> {
+				<Button style={styles.buttonStyle} block onPress={()=> {
 					Actions.updateMovie({initialValues: movie})
-				}}>Edit</Button>
+				}}>
+					Edit
+				</Button>
+				<Button style={styles.buttonStyle} block danger onPress={() => deleteMovie(movie)}>
+					Delete
+				</Button>
 			</Content>
 		</Container>
 	);
@@ -44,6 +57,10 @@ const Component = ({data: movie}) => {
 let styles = StyleSheet.create({
 	rowStyle: {
 		padding: 10
+	},
+	buttonStyle: {
+		marginTop: 5,
+		marginBottom: 5,
 	}
 });
 
