@@ -6,7 +6,10 @@ The MovieListr application, this time a mobile app with react-native.
 
 ## How to run
 
-Do this:
+You need to run this backend to use the app:
+https://github.com/ivarcegeka/movielistr-backend-java
+
+Then do this:
 https://facebook.github.io/react-native/docs/getting-started.html
 
 Then:
